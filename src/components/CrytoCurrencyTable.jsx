@@ -12,7 +12,7 @@ import {
 
 const CryptoCurrencyTable = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [cryptoDetails, setCryptoDetails] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +27,7 @@ const CryptoCurrencyTable = () => {
           },
         );
         const response = await data.json();
-        setData(response.data);
+        setCryptoDetails(response.data);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -73,9 +73,9 @@ const CryptoCurrencyTable = () => {
               </TableRow>
             </TableHeader>
             <TableBody className="bg-[#ffffff]">
-              {data.map((item, index) => (
+              {cryptoDetails.map((item, index) => (
                 <TableRow key={index}>
-                  <TableCell className="font-medium">{item.cmc_rank}</TableCell>
+                  <TableCell>{item.cmc_rank}</TableCell>
                   <TableCell>{item.name}</TableCell>
                   <TableCell>${item.quote.USD.price.toFixed(2)}</TableCell>
                   <TableCell>${item.quote.USD.market_cap.toFixed(2)}</TableCell>
