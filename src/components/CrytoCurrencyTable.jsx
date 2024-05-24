@@ -98,8 +98,8 @@ const CrytoCurrencyTable = () => {
 
   return (
     <>
-      <div>
-        <Table className="mt-5 border-2 border-[#dddddd]">
+      <div className="">
+        <Table className="mt-5 cursor-pointer border-2 border-[#dddddd]">
           <TableHeader>
             <TableRow className="bg-[#dddddd] hover:bg-[#dddddd] ">
               <TableHead className="font-semibold text-[#000]">Rank</TableHead>

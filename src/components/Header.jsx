@@ -6,8 +6,8 @@ import { FaMoneyBillWave } from "react-icons/fa";
 const Header = () => {
   return (
     <div>
-      <header>
-        <nav className="flex justify-between bg-[#4fb6ae] px-5 py-3 text-white">
+      <header className="cursor-pointer">
+        <nav className="hidden justify-between bg-[#4fb6ae] px-5 py-3 text-white lg:flex">
           <div className="flex gap-5">
             <p>Home</p>
             <p>Fear and Greed</p>
@@ -21,7 +21,7 @@ const Header = () => {
             <p>Youtube</p>
           </div>
         </nav>
-        <div className="flex justify-between bg-[#ffffff] px-5 py-3">
+        <div className="hidden justify-between bg-[#ffffff] px-5 py-3 lg:flex">
           <img
             src="https://cryptocurrencytracker.info/public/storage/settings/January2021/CoBtAZ7K0VO221QFxU1f.jpeg"
             alt=""
