@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <div>
       <header>
-        <nav className="text-white flex justify-between bg-[#4fb6ae] px-5 py-3">
+        <nav className="flex justify-between bg-[#4fb6ae] px-5 py-3 text-white">
           <div className="flex gap-5">
             <p>Home</p>
             <p>Fear and Greed</p>
@@ -48,7 +48,7 @@ const Header = () => {
             <input
               type="text"
               placeholder="search a coin..."
-              className="rounded border border-[#dededf] px-2 py-1"
+              className="rounded border border-[#dededf] px-2 py-1 outline-none"
             />
             <CiSearch className="absolute right-1 top-2 text-xl text-[#909090]" />
           </div>
