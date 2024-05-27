@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import spinner from "../assets/spinner.gif";
+
 import {
   Table,
   TableBody,
@@ -9,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
 const CryptoCurrencyTable = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [cryptoDetails, setCryptoDetails] = useState([]);
@@ -17,16 +19,16 @@ const CryptoCurrencyTable = () => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const data = await fetch(
+        const response = await fetch(
           "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest",
           {
             headers: {
-              "X-CMC_PRO_API_KEY": "468c3d5a-f439-4fa5-8c1e-56f84603712b",
+              "X-CMC_PRO_API_KEY": import.meta.env.VITE_COINMARKETCAP_API_KEY,
             },
-          },
+          }
         );
-        const response = await data.json();
-        setCryptoDetails(response.data);
+        const data = await response.json();
+        setCryptoDetails(data.data);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -48,21 +50,11 @@ const CryptoCurrencyTable = () => {
           <Table className="mt-5 cursor-pointer border-2 border-[#dddddd]">
             <TableHeader>
               <TableRow className="bg-[#dddddd] font-semibold text-[#000] hover:bg-[#dddddd] ">
-                <TableHead className="font-semibold text-[#000]">
-                  Rank
-                </TableHead>
-                <TableHead className="font-semibold text-[#000]">
-                  Name
-                </TableHead>
-                <TableHead className="font-semibold text-[#000]">
-                  Price
-                </TableHead>
-                <TableHead className="font-semibold text-[#000]">
-                  Market Cap
-                </TableHead>
-                <TableHead className="font-semibold text-[#000]">
-                  24h Vol
-                </TableHead>
+                <TableHead className="font-semibold text-[#000]">Rank</TableHead>
+                <TableHead className="font-semibold text-[#000]">Name</TableHead>
+                <TableHead className="font-semibold text-[#000]">Price</TableHead>
+                <TableHead className="font-semibold text-[#000]">Market Cap</TableHead>
+                <TableHead className="font-semibold text-[#000]">24h Vol</TableHead>
                 <TableHead className="font-semibold text-[#000]">1h</TableHead>
                 <TableHead className="font-semibold text-[#000]">24h</TableHead>
                 <TableHead className="font-semibold text-[#000]">7d</TableHead>
@@ -79,24 +71,12 @@ const CryptoCurrencyTable = () => {
                   <TableCell>${item.quote.USD.price.toFixed(2)}</TableCell>
                   <TableCell>${item.quote.USD.market_cap.toFixed(2)}</TableCell>
                   <TableCell>${item.quote.USD.volume_24h.toFixed(2)}</TableCell>
-                  <TableCell>
-                    {item.quote.USD.percent_change_1h.toFixed(2)}%
-                  </TableCell>
-                  <TableCell>
-                    {item.quote.USD.percent_change_24h.toFixed(2)}%
-                  </TableCell>
-                  <TableCell>
-                    {item.quote.USD.percent_change_7d.toFixed(2)}%
-                  </TableCell>
-                  <TableCell>
-                    {item.quote.USD.percent_change_30d.toFixed(2)}%
-                  </TableCell>
-                  <TableCell>
-                    {item.quote.USD.percent_change_60d.toFixed(2)}%
-                  </TableCell>
-                  <TableCell>
-                    {item.quote.USD.percent_change_90d.toFixed(2)}%
-                  </TableCell>
+                  <TableCell>{item.quote.USD.percent_change_1h.toFixed(2)}%</TableCell>
+                  <TableCell>{item.quote.USD.percent_change_24h.toFixed(2)}%</TableCell>
+                  <TableCell>{item.quote.USD.percent_change_7d.toFixed(2)}%</TableCell>
+                  <TableCell>{item.quote.USD.percent_change_30d.toFixed(2)}%</TableCell>
+                  <TableCell>{item.quote.USD.percent_change_60d.toFixed(2)}%</TableCell>
+                  <TableCell>{item.quote.USD.percent_change_90d.toFixed(2)}%</TableCell>
                 </TableRow>
               ))}
             </TableBody>
