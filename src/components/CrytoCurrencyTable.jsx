@@ -9,7 +9,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
 const CryptoCurrencyTable = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [cryptoDetails, setCryptoDetails] = useState([]);
