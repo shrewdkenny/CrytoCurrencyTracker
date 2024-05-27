@@ -6,8 +6,7 @@ import path from "path";
 export default defineConfig({
   server: {
     proxy: {
-      "/api":
-        "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest",
+      "/api": "http://localhost:5173/",
     },
   },
   plugins: [react()],
