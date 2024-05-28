@@ -2,6 +2,7 @@ import React from "react";
 import { GiUsaFlag } from "react-icons/gi";
 import { CiLogin, CiSearch } from "react-icons/ci";
 import { FaMoneyBillWave } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -9,7 +10,9 @@ const Header = () => {
       <header className="cursor-pointer">
         <nav className="hidden justify-between bg-[#4fb6ae] px-5 py-3 text-white lg:flex">
           <div className="flex gap-5">
-            <p>Home</p>
+            <Link to="/">
+              <p>Home</p>
+            </Link>
             <p>Fear and Greed</p>
             <p>News</p>
           </div>
