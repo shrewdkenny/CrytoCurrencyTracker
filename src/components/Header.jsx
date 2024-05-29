@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { GiUsaFlag } from "react-icons/gi";
 import { CiLogin, CiSearch } from "react-icons/ci";
 import { FaMoneyBillWave } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import ApiContext from "@/ApiContext";
 
 const Header = () => {
+  const { cryptoDetails } = useContext(ApiContext);
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredResults, setFilteredResults] = useState([]);
+
+  useEffect(() => {
+    if (searchInput) {
+      const results = cryptoDetails.filter((crypto) =>
+        crypto.name.toLowerCase().includes(searchInput.toLowerCase()),
+      );
+      setFilteredResults(results);
+    } else {
+      setFilteredResults([]);
+    }
+  }, [searchInput, cryptoDetails]);
+
+  const handleInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
   return (
     <div>
       <header className="cursor-pointer">
@@ -49,11 +68,23 @@ const Header = () => {
           </div>
           <div className="relative">
             <input
+              value={searchInput}
+              onChange={handleInputChange}
               type="text"
               placeholder="search a coin..."
               className="rounded border border-[#dededf] px-2 py-1 outline-none"
             />
             <CiSearch className="absolute right-1 top-2 text-xl text-[#909090]" />
+
+            {filteredResults.length > 0 && (
+              <ul className="absolute left-0 right-0 mt-1 max-h-40 overflow-y-auto border border-gray-300 bg-white">
+                {filteredResults.map((crypto) => (
+                  <li key={crypto.id} className="px-4 py-2 hover:bg-gray-200">
+                    {crypto.name}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </header>

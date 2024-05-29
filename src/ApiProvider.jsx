@@ -3,6 +3,7 @@ import ApiContext from "./ApiContext";
 
 const ApiProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [name, setName] = useState([]);
   const [cryptoDetails, setCryptoDetails] = useState([]);
   useEffect(() => {
     const fetchData = async () => {

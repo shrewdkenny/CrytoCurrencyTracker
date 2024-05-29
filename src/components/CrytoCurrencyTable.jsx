@@ -16,31 +16,7 @@ const CryptoCurrencyTable = () => {
   const { isLoading, cryptoDetails } = useContext(ApiContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(50);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       setIsLoading(true);
-  //       const response = await fetch(
-  //         "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest",
-  //         {
-  //           headers: {
-  //             "X-CMC_PRO_API_KEY": import.meta.env.VITE_COINMARKETCAP_API_KEY,
-  //           },
-  //         },
-  //       );
-  //       const data = await response.json();
-  //       setCryptoDetails(data.data);
-  //       setIsLoading(false);
-  //     } catch (error) {
-  //       setIsLoading(false);
-  //       console.error("Error fetching data", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
+  
   // logic for pagination
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
