@@ -43,13 +43,16 @@ const Header = () => {
             <p>Youtube</p>
           </div>
         </nav>
-        <div className="hidden justify-between bg-[#ffffff] px-5 py-3 lg:flex">
-          <img
-            src="https://cryptocurrencytracker.info/public/storage/settings/January2021/CoBtAZ7K0VO221QFxU1f.jpeg"
-            alt=""
-            className="h-10 w-60"
-          />
-          <div className="flex gap-5 ">
+        <div className=" flex justify-between bg-[#ffffff] px-5 py-3">
+          <Link to="/">
+            <img
+              src="https://cryptocurrencytracker.info/public/storage/settings/January2021/CoBtAZ7K0VO221QFxU1f.jpeg"
+              alt=""
+              className="h-10 w-60"
+            />
+          </Link>
+
+          <div className="hidden gap-5 lg:flex">
             <button className="flex items-center gap-1 rounded bg-gray-200 px-4 text-xs font-bold">
               <GiUsaFlag /> USA
             </button>
