@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
+import ApiContext from "@/ApiContext";
 import spinner from "../assets/spinner.gif";
 
 import {
@@ -12,34 +13,33 @@ import {
 } from "@/components/ui/table";
 
 const CryptoCurrencyTable = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [cryptoDetails, setCryptoDetails] = useState([]);
+  const { isLoading, cryptoDetails } = useContext(ApiContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(50);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const response = await fetch(
-          "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest",
-          {
-            headers: {
-              "X-CMC_PRO_API_KEY": import.meta.env.VITE_COINMARKETCAP_API_KEY,
-            },
-          },
-        );
-        const data = await response.json();
-        setCryptoDetails(data.data);
-        setIsLoading(false);
-      } catch (error) {
-        setIsLoading(false);
-        console.error("Error fetching data", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       setIsLoading(true);
+  //       const response = await fetch(
+  //         "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest",
+  //         {
+  //           headers: {
+  //             "X-CMC_PRO_API_KEY": import.meta.env.VITE_COINMARKETCAP_API_KEY,
+  //           },
+  //         },
+  //       );
+  //       const data = await response.json();
+  //       setCryptoDetails(data.data);
+  //       setIsLoading(false);
+  //     } catch (error) {
+  //       setIsLoading(false);
+  //       console.error("Error fetching data", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   // logic for pagination
   const indexOfLastPost = currentPage * postsPerPage;
@@ -61,7 +61,7 @@ const CryptoCurrencyTable = () => {
 
   return (
     <>
-      <div className="mt-4 flex justify-end gap-2">
+      <div className="mt-4 flex justify-end gap-3">
         <button
           onClick={handlePrevPage}
           className="rounded bg-[#ffffff] px-4 py-2 text-[#4fb6a3] "
